@@ -4,12 +4,31 @@
   
     
     <entry>
+      <title>通知---博客正在迁移至华为云服务器</title>
+      <link href="/2019/11/30/announce/"/>
+      <url>/2019/11/30/announce/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《STL源码剖析》第4章 序列式容器---vector</title>
       <link href="/2019/11/28/stl01/"/>
       <url>/2019/11/28/stl01/</url>
       
         <content type="html"><![CDATA[<p>占坑</p>]]></content>
       
+      
+      <categories>
+          
+          <category> STL源码剖析 </category>
+          
+      </categories>
       
       
         <tags>
