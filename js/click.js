@@ -1,1 +1,125 @@
-!function(e,o){var i,r=[];e.requestAnimationFrame=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},function(t){var a=o.createElement("style");a.type="text/css";try{a.appendChild(o.createTextNode(t))}catch(e){a.styleSheet.cssText=t}o.getElementsByTagName("head")[0].appendChild(a)}(".heart{width: 40px;height: 40px;position: fixed;color: red;}"),i="function"==typeof e.onclick&&e.onclick,e.onclick=function(e){var t,a,n;i&&i(),t=e,a=o.createElement("div"),n=Math.floor(12*Math.random()),a.innerHTML=["富强","民主","文明","和谐","自由","平等","公正","法治","爱国","敬业","诚信","友善"][n],a.className="heart",r.push({el:a,x:t.clientX-5,y:t.clientY-5,scale:1,alpha:1,color:"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}),o.body.appendChild(a)},function e(){for(var t=0;t<r.length;t++)r[t].alpha<=0?(o.body.removeChild(r[t].el),r.splice(t,1)):(r[t].y--,r[t].scale+=.004,r[t].alpha-=.013,r[t].el.style.cssText="left:"+r[t].x+"px;top:"+r[t].y+"px;opacity:"+r[t].alpha+";transform:scale("+r[t].scale+","+r[t].scale+") rotate(0deg);color:"+r[t].color+";z-index:99999");requestAnimationFrame(e)}()}(window,document);
+/* 点击出现文字特效 */
+!function(e, t, a) {
+function n() {
+	c(".heart{width: 40px;height: 40px;position: fixed;color: red;}"), o(), r()
+}
+
+function r() {
+	for(var e = 0; e < d.length; e++) d[e].alpha <= 0 ? (t.body.removeChild(d[e].el), d.splice(e, 1)) : (d[e].y--, d[e].scale += .004, d[e].alpha -= .013, d[e].el.style.cssText = "left:" + d[e].x + "px;top:" + d[e].y + "px;opacity:" + d[e].alpha + ";transform:scale(" + d[e].scale + "," + d[e].scale + ") rotate(0deg);color:" + d[e].color + ";z-index:99999");
+	requestAnimationFrame(r)
+}
+
+function o() {
+	var t = "function" == typeof e.onclick && e.onclick;
+	e.onclick = function(e) {
+		t && t(), i(e)
+	}
+}
+
+function i(e) {
+	var a = t.createElement("div");
+	var arr = ["富强","民主","文明","和谐","自由","平等","公正","法治","爱国","敬业","诚信","友善"];
+	var i = Math.floor(Math.random()*12);
+
+	a.innerHTML = arr[i];
+	a.className = "heart", d.push({
+		el: a,
+		x: e.clientX - 5,
+		y: e.clientY - 5,
+		scale: 1,
+		alpha: 1,
+		color: s()
+	}), t.body.appendChild(a)
+}
+
+function c(e) {
+	var a = t.createElement("style");
+	a.type = "text/css";
+	try {
+		a.appendChild(t.createTextNode(e))
+	} catch(t) {
+		a.styleSheet.cssText = e
+	}
+	t.getElementsByTagName("head")[0].appendChild(a)
+}
+
+function s() {
+	return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+}
+var d = [];
+e.requestAnimationFrame = function() {
+	return e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function(e) {
+		setTimeout(e, 1e3 / 60)
+	}
+}(), n()
+}(window, document);
+
+/* 出现爱心 */
+/* 
+(function(window,document,undefined){
+        var hearts = [];
+        window.requestAnimationFrame = (function(){
+                return window.requestAnimationFrame || 
+                           window.webkitRequestAnimationFrame ||
+                           window.mozRequestAnimationFrame ||
+                           window.oRequestAnimationFrame ||
+                           window.msRequestAnimationFrame ||
+                           function (callback){
+                                   setTimeout(callback,1000/60);
+                           }
+        })();
+        init();
+        function init(){
+                css(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+                attachEvent();
+                gameloop();
+        }
+        function gameloop(){
+                for(var i=0;i<hearts.length;i++){
+                    if(hearts[i].alpha <=0){
+                            document.body.removeChild(hearts[i].el);
+                            hearts.splice(i,1);
+                            continue;
+                    }
+                    hearts[i].y--;
+                    hearts[i].scale += 0.004;
+                    hearts[i].alpha -= 0.013;
+                    hearts[i].el.style.cssText = "left:"+hearts[i].x+"px;top:"+hearts[i].y+"px;opacity:"+hearts[i].alpha+";transform:scale("+hearts[i].scale+","+hearts[i].scale+") rotate(45deg);background:"+hearts[i].color;
+            }
+            requestAnimationFrame(gameloop);
+        }
+        function attachEvent(){
+                var old = typeof window.onclick==="function" && window.onclick;
+                window.onclick = function(event){
+                        old && old();
+                        createHeart(event);
+                }
+        }
+        function createHeart(event){
+            var d = document.createElement("div");
+            d.className = "heart";
+            hearts.push({
+                    el : d,
+                    x : event.clientX - 5,
+                    y : event.clientY - 5,
+                    scale : 1,
+                    alpha : 1,
+                    color : randomColor()
+            });
+            document.body.appendChild(d);
+    }
+    function css(css){
+            var style = document.createElement("style");
+                style.type="text/css";
+                try{
+                    style.appendChild(document.createTextNode(css));
+                }catch(ex){
+                    style.styleSheet.cssText = css;
+                }
+                document.getElementsByTagName('head')[0].appendChild(style);
+    }
+        function randomColor(){
+                return "rgb("+(~~(Math.random()*255))+","+(~~(Math.random()*255))+","+(~~(Math.random()*255))+")";
+        }
+})(window,document);
+ */
