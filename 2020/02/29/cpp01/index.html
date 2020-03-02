@@ -490,35 +490,30 @@
       
         <p>C++的内存分区</p>
 <p>指针数组和数组指针</p>
-<p><s>引用数组</s>和数组引用</p>
+<p><del>引用数组</del>和数组引用</p>
 <p>struct和class</p>
 <p>struct的空间大小及数据对齐</p>
 <a id="more"></a>
-<h3 id="内存分区"><a class="markdownIt-Anchor" href="#内存分区"></a> 内存分区</h3>
-<ol>
+<h3 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h3><ol>
 <li>堆:由程序员手动分配和释放，完全不同于数据结构中的堆，分配方式类似链表。由malloc(C语言)或new (C++)来分配，free (C语言)和delete (C++) 释放。若程序员不释放，程序结束时由系统释放。</li>
 <li>2)栈:由编译器自动分配和释放的，存放函数的参数值、局部变量的值等。操作方式类似数据结构中的栈。</li>
 <li>静态存储区:存放全局变量和静态变量。包括DATA段(全局初始化区)与BSS段(全局未初始化区)。其中，初始化的全局变量和静态变量存放在DATA段，未初始化的全局变量和未初始化的静态变量存放在BSS段。程序结束后由系统释放。其中BSS段的特点是:在程序执行之前BSS段会自动清0。所以，未初始的全局变量与静态变量在程序执行之前已经成0了。</li>
 <li>文字常量区:常量字符串就是放在这里的。程序结束后由系统释放。</li>
 <li>程序代码区:存放函数体的二进制代码。</li>
 </ol>
-<h3 id="指针数组和数组指针"><a class="markdownIt-Anchor" href="#指针数组和数组指针"></a> 指针数组和数组指针</h3>
-<p>指针数组：一个数组里边都是指针</p>
+<h3 id="指针数组和数组指针"><a href="#指针数组和数组指针" class="headerlink" title="指针数组和数组指针"></a>指针数组和数组指针</h3><p>指针数组：一个数组里边都是指针</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *a[<span class="number">10</span>];	<span class="comment">// 有10个int*</span></span><br></pre></td></tr></table></figure>
 <p>数组指针：一个指向数组的指针</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*p)[<span class="number">10</span>];	<span class="comment">// 指向长度为10的指针</span></span><br></pre></td></tr></table></figure>
-<h3 id="引用数组和数组引用"><a class="markdownIt-Anchor" href="#引用数组和数组引用"></a> <s>引用数组</s>和数组引用</h3>
-<p>引用数组：不存在的</p>
+<h3 id="引用数组和数组引用"><a href="#引用数组和数组引用" class="headerlink" title="引用数组和数组引用"></a><del>引用数组</del>和数组引用</h3><p>引用数组：不存在的</p>
 <p>数组引用：一个数组的引用（别名）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (&amp;a)[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
-<h3 id="struct和class"><a class="markdownIt-Anchor" href="#struct和class"></a> struct和class</h3>
-<p>在C++中，struct只有两点跟class不同</p>
+<h3 id="struct和class"><a href="#struct和class" class="headerlink" title="struct和class"></a>struct和class</h3><p>在C++中，struct只有两点跟class不同</p>
 <ol>
 <li>struct默认访问权限是public，class是private</li>
 <li>struct默认继承方式是public，class是private</li>
 </ol>
-<h3 id="struct的空间大小及数据对齐"><a class="markdownIt-Anchor" href="#struct的空间大小及数据对齐"></a> struct的空间大小及数据对齐</h3>
-<ol>
+<h3 id="struct的空间大小及数据对齐"><a href="#struct的空间大小及数据对齐" class="headerlink" title="struct的空间大小及数据对齐"></a>struct的空间大小及数据对齐</h3><ol>
 <li>整体空间是占用空间最大的成员所占字节数的整数倍</li>
 <li>内存按结构体成员顺序依次存放，当排到某一成员时，其前面已摆放的空间大小必须是该成员类型大小的整数倍，不够则补齐</li>
 </ol>
@@ -925,7 +920,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分区"><span class="nav-number">1.</span> <span class="nav-text"> 内存分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针数组和数组指针"><span class="nav-number">2.</span> <span class="nav-text"> 指针数组和数组指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用数组和数组引用"><span class="nav-number">3.</span> <span class="nav-text"> 引用数组和数组引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct和class"><span class="nav-number">4.</span> <span class="nav-text"> struct和class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct的空间大小及数据对齐"><span class="nav-number">5.</span> <span class="nav-text"> struct的空间大小及数据对齐</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分区"><span class="nav-number">1.</span> <span class="nav-text">内存分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针数组和数组指针"><span class="nav-number">2.</span> <span class="nav-text">指针数组和数组指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用数组和数组引用"><span class="nav-number">3.</span> <span class="nav-text">引用数组和数组引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct和class"><span class="nav-number">4.</span> <span class="nav-text">struct和class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct的空间大小及数据对齐"><span class="nav-number">5.</span> <span class="nav-text">struct的空间大小及数据对齐</span></a></li></ol></div>
             
 
           </div>
