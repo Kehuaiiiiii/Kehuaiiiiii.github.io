@@ -508,32 +508,37 @@
 
       
         <blockquote>
-<p>本文介绍如何在搜索引擎上能够搜到你的博客/博文<br><a id="more"></a></p>
-<h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>在百度中搜索你的博客域名，出现如下情况</p>
+<p>本文介绍如何在搜索引擎上能够搜到你的博客/博文</p>
 </blockquote>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-1.jpg" width="400px" height="300px" align="center"></p>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-emoji1.jpg" width="400px" height="300px" align="center"></p>
-<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><p>点击上图中的<code>提交网址</code>或者自行搜索百度站长</p>
+<a id="more"></a>
+<h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> 问题描述：</h2>
+<p>在百度中搜索你的博客域名，出现如下情况</p>
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-1.jpg" width="400px" height="300px" align="center">
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-emoji1.jpg" width="400px" height="300px" align="center">
+<h2 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法"></a> 解决方法：</h2>
+<p>点击上图中的<code>提交网址</code>或者自行搜索百度站长</p>
 <p>注册、登录、认证（神烦）后</p>
 <p>找到<code>用户中心 --&gt; 站点管理 --&gt; 添加网站</code></p>
 <p>按步骤完成后到达<code>网站验证</code>，这里我选择用<code>CANME验证</code></p>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-2.jpg" width="400px" height="200px" align="center"></p>
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-2.jpg" width="400px" height="200px" align="center">
 <p>按照他给的网站 去到阿里云域名解析添加解析（验证完成后也不要删）</p>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-3.jpg" width="400px" height="100px" align="center"></p>
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-3.jpg" width="400px" height="100px" align="center">
 <p>等待验证 完成！</p>
-<h2 id="生成sitemap"><a href="#生成sitemap" class="headerlink" title="生成sitemap"></a>生成sitemap</h2><p>先安装sitemap插件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成sitemap"><a class="markdownIt-Anchor" href="#生成sitemap"></a> 生成sitemap</h2>
+<p>先安装sitemap插件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
 <p>然后需要到hexo根目录下的<code>_config.yml</code>中添加</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 自动生成sitemap</span><br><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
-<p>编译博客<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
+<p>编译博客</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 <p>在<code>public</code>下看看有没有<code>sitemap.xml</code>和<code>baidusitemap.xml</code>生成</p>
 <p>有的话就去主题配置文件中的<code>baidu_push</code>改为true</p>
 <p>这样百度就会自动收录你的博文</p>
 <p>也可以手动去百度站长平台提交你的<code>sitemap.xml</code>和<code>baidusitemap.xml</code></p>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-6.jpg" width="400px" height="300px" align="center"></p>
-<p>emmmm….终于有了</p>
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-6.jpg" width="400px" height="300px" align="center">
+<p>emmmm…终于有了</p>
 <p>百度效率令人捉急，慢慢等吧。。。</p>
-<p><img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-7.jpg" width="450px" height="200px" align="center"></p>
-
+<img src="https://kimiye.oss-cn-shanghai.aliyuncs.com/img/hexo/hexo2-7.jpg" width="450px" height="200px" align="center">
       
     </div>
 
@@ -933,7 +938,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述："><span class="nav-number">1.</span> <span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法："><span class="nav-number">2.</span> <span class="nav-text">解决方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成sitemap"><span class="nav-number">3.</span> <span class="nav-text">生成sitemap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text"> 问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text"> 解决方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成sitemap"><span class="nav-number">3.</span> <span class="nav-text"> 生成sitemap</span></a></li></ol></div>
             
 
           </div>

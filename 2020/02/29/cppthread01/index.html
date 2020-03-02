@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="C++11多线程开发—-join、detach、joinable">
+  <meta name="description" content="C++11多线程开发—join、detach、joinable">
 <meta name="keywords" content="C++,面试,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++11多线程开发---join、detach、joinable">
 <meta property="og:url" content="http://www.kimiye.xyz/2020/02/29/cppthread01/index.html">
 <meta property="og:site_name" content="Kehuaiiiiii">
-<meta property="og:description" content="C++11多线程开发—-join、detach、joinable">
+<meta property="og:description" content="C++11多线程开发—join、detach、joinable">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-02-29T14:34:30.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++11多线程开发---join、detach、joinable">
-<meta name="twitter:description" content="C++11多线程开发—-join、detach、joinable">
+<meta name="twitter:description" content="C++11多线程开发—join、detach、joinable">
 
 
 
@@ -488,26 +488,32 @@
       
 
       
-        <p>C++11多线程开发—-join、detach、joinable</p>
+        <p>C++11多线程开发—join、detach、joinable</p>
 <a id="more"></a>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>进程是一个程序的实例，一个进程包含多个线程</p>
+<h3 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h3>
+<p>进程是一个程序的实例，一个进程包含多个线程</p>
 <p>C++中，线程的作用在于执行代码、调用函数，一个进程包含一个主线程</p>
 <p>主线程的入口即是main()，因此所有代码都是从main开始的</p>
 <p>我们可以创建子线程，让主线程和子线程同时去干事情</p>
-<h3 id="C-11多线程开发头文件"><a href="#C-11多线程开发头文件" class="headerlink" title="C++11多线程开发头文件"></a>C++11多线程开发头文件</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">myt</span><span class="params">(fun, [... args])</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="c11多线程开发头文件"><a class="markdownIt-Anchor" href="#c11多线程开发头文件"></a> C++11多线程开发头文件</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="创建线程"><a class="markdownIt-Anchor" href="#创建线程"></a> 创建线程</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">myt</span><span class="params">(fun, [... args])</span></span>;</span><br></pre></td></tr></table></figure>
 <p>说明：</p>
 <p>fun可传递一个普通函数、成员函数、可调用对象、lamda表达式</p>
 <p>args用于传递fun的参数</p>
 <p>看例子</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"这是子线程fun1！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fun2</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"这是子线程fun2！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fun3</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"这是子线程fun3！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">auto</span> fun4 = []() &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"这是子线程fun4！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="function">thread <span class="title">t</span><span class="params">(fun1)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//fun2 A;</span></span><br><span class="line">	<span class="comment">//std::thread t(&amp;fun2::work, &amp;A);</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//fun3 A;</span></span><br><span class="line">	<span class="comment">//std::thread t(A);</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//std::thread t(fun4);</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"这是主线程！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	t.join();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>从结果我们可以注意到，子线程和主线程的调度是由操作系统决定的，所以输出结果可能是交错的</p>
-<h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p><code>阻塞当前线程，等待子线程t执行完毕后继续运行</code></p>
+<h3 id="join"><a class="markdownIt-Anchor" href="#join"></a> join()</h3>
+<p><code>阻塞当前线程，等待子线程t执行完毕后继续运行</code></p>
 <p>例如上例中，若我们不加<code>t.join()</code>，则可能主线程先执行完毕，我们看不到子线程打印的五句话了</p>
-<h3 id="detch"><a href="#detch" class="headerlink" title="detch()"></a>detch()</h3><p><code>将当前线程与子线程t分离，子线程t交由守护线程管理，与当前线程无关</code></p>
+<h3 id="detch"><a class="markdownIt-Anchor" href="#detch"></a> detch()</h3>
+<p><code>将当前线程与子线程t分离，子线程t交由守护线程管理，与当前线程无关</code></p>
 <p>简单来说就是将当前线程与子线程之间没有联系了，但这样做往往会产生一些问题</p>
 <p>比如子线程如果在使用主线程的某些对象，当主线程销毁后，对象也会进行销毁，那么子线程引用对象的时候可能会导致系统出错</p>
-<h3 id="joinable"><a href="#joinable" class="headerlink" title="joinable()"></a>joinable()</h3><p><code>返回子线程t能否join/detch</code></p>
+<h3 id="joinable"><a class="markdownIt-Anchor" href="#joinable"></a> joinable()</h3>
+<p><code>返回子线程t能否join/detch</code></p>
 <p>一个子线程join了之后就不能再detch，detch之后不能再join</p>
 
       
@@ -913,7 +919,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-11多线程开发头文件"><span class="nav-number">2.</span> <span class="nav-text">C++11多线程开发头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程"><span class="nav-number">3.</span> <span class="nav-text">创建线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">4.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detch"><span class="nav-number">5.</span> <span class="nav-text">detch()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#joinable"><span class="nav-number">6.</span> <span class="nav-text">joinable()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c11多线程开发头文件"><span class="nav-number">2.</span> <span class="nav-text"> C++11多线程开发头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建线程"><span class="nav-number">3.</span> <span class="nav-text"> 创建线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">4.</span> <span class="nav-text"> join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detch"><span class="nav-number">5.</span> <span class="nav-text"> detch()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#joinable"><span class="nav-number">6.</span> <span class="nav-text"> joinable()</span></a></li></ol></div>
             
 
           </div>
